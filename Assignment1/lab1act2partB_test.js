@@ -10,6 +10,9 @@ console.log(calc('{"op": "subtract", "expr" : {"op" : "add", "number" : 15}}'));
 console.log(calc('{"op": "add", "expr" : {"op" : "add", "expr" : {"op" : "subtract", "number" : 3}}}'));
 
 
+console.log('\n\n\n\n');
+
+
 console.log("TESTING exec()");
 
 

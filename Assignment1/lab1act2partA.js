@@ -9,10 +9,7 @@ function exec(array){
     for (var i=0; i < array.length; i ++){
 
         var exp = array[i].exp;
-
         var expected = array[i].expected;
-
-        
         var a = new Calc()
 
         console.log((a.calc(exp)) + " : " + expected); 
