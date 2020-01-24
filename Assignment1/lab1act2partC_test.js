@@ -21,59 +21,59 @@ a.print();
 
 
 //1
-console.log("\n\n\n start of call 1")
+console.log("\n\n\nstart of call 1")
 a.calc({"op" : "add", "number" : 5})
 a.print();
 
 //2
-console.log("\n\n\n start of call 2")
+console.log("\n\n\nstart of call 2")
 a.calc({"op" : "push", "number" : 5})
 a.print();
 
 //3
-console.log("\n\n\n start of call 3")
+console.log("\n\n\nstart of call 3")
 a.calc({"op" : "pop"})
 a.print();
 
 //4
-console.log("\n\n\n start of call 4")
+console.log("\n\n\nstart of call 4")
 a.calc({"op" : "push", "expr" : {"op" : "subtract", "number" : 2}})
 a.print();
 
 //5
-console.log("\n\n\n start of call 5")
+console.log("\n\n\nstart of call 5")
 a.calc({"op" : "push", "expr" : {"op" : "add", "number" : 19}})
 a.print();
 
 //6
-console.log("\n\n\n start of call 6")
+console.log("\n\n\nstart of call 6")
 a.calc({"op" : "pop"})
 a.print();
 
 //7
-console.log("\n\n\n start of call 7")
+console.log("\n\n\nstart of call 7")
 a.calc({"op" : "print"})
 
 //8
-console.log("\n\n\n start of call 8")
+console.log("\n\n\nstart of call 8")
 a.calc({"op" : "push", "expr" : {"op" : "add", "expr": {"op" : "pop"}}})
 a.print();
 
 //9
-console.log("\n\n\n start of call 9")
+console.log("\n\n\nstart of call 9")
 a.calc({"op" : "print"})
 
 //10
-console.log("\n\n\n start of call 10")
+console.log("\n\n\nstart of call 10")
 a.calc()
 a.print({"op" : "pop"});
 
 //11
-console.log("\n\n\n start of call 11")
+console.log("\n\n\nstart of call 11")
 a.calc({"op" : "pop"})
 a.print();
 
 //12
-console.log("\n\n\n start of call 12")
+console.log("\n\n\nstart of call 12")
 a.calc({"op" : "pop"})
 a.print();

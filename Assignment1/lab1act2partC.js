@@ -15,10 +15,10 @@ class PreCalc{
 
     push(Number){
 
-        console.log("in push")
+        //console.log("in push")
 
-            console.log("in push loop")
-            console.log(this.calcStack.length)
+            //console.log("in push loop")
+            //console.log(this.calcStack.length)
 
             //if array is empty
             if (this.calcStack.length == 0){
@@ -44,8 +44,6 @@ class PreCalc{
 
         this.calcStack.shift();
 
-        this.print()
-
         return first;
     }
 
@@ -57,7 +55,7 @@ class PreCalc{
         }
         
         var array = ""
-        console.log("\narray starting at index 0 from left to right:")
+        console.log("array starting at index 0 from left to right:")
         for(var i in this.calcStack){
             array += this.calcStack[i] + ", "
         }
@@ -77,7 +75,7 @@ class PreCalc{
     
         //DEBUG
        //console.log("true or false: " + operation.hasOwnProperty('expr'))    
-        console.log(operation)
+        //console.log(operation)
         //console.log(operation.expr)
 
 
@@ -87,20 +85,20 @@ class PreCalc{
             //answer = 0
 
             var expr2 = operation["expr"] 
-            console.log(expr2)
+            //console.log(expr2)
 
 
             recursive++
-            console.log("RECURSION AFTER INCREMENT")
-            console.log(recursive)
+            //console.log("RECURSION AFTER INCREMENT")
+            //console.log(recursive)
             this.calc(expr2)
             recursive--
-            console.log("RECURSION AFTER DEINCREMENT")
-            console.log(recursive)
+            //console.log("RECURSION AFTER DEINCREMENT")
+            //console.log(recursive)
 
-            console.log("\nunwinded number is: " + num) 
-            console.log("unwinded answer is: " + answer + "\n")
-            console.log(operation.op)
+            //console.log("\nunwinded number is: " + num) 
+            //console.log("unwinded answer is: " + answer + "\n")
+            //console.log(operation.op)
             //num = answer    
             //console.log("after recursion num: " + num+ " became answer: " + answer + "\n")
 
@@ -119,38 +117,38 @@ class PreCalc{
         var op = operation.op;
         
       
-        console.log("operation before call is: " + op)
-        console.log("number before call is: " + num)
-        console.log("answer before call is: " + answer)
-        console.log("stack before call is: " + stack)
+        //console.log("operation before call is: " + op)
+        //console.log("number before call is: " + num)
+        //console.log("answer before call is: " + answer)
+        //console.log("stack before call is: " + stack)
 
         //IF PUSH
         if(op == "push" && operation.hasOwnProperty('number')){
-            console.log("op is equal to push: " + num)
+            //console.log("op is equal to push: " + num)
             this.push(num)
             stack = num
-            console.log("after push w/ num stack is: " + stack + " and number is : " +  num)
+            //console.log("after push w/ num stack is: " + stack + " and number is : " +  num)
         }else if (op == "push" && operation.hasOwnProperty('number') == false){
             stack = answer
-            console.log("op is equal to push: " + stack)
+            //console.log("op is equal to push: " + stack)
             this.push(stack)
-            console.log("after push stack is: " + stack + " and number is : " +  answer)
+            //console.log("after push stack is: " + stack + " and number is : " +  answer)
 
         }
 
         //IF POP
         if(op == "pop" && recursive < 1 ){
-            console.log("op is equal to pop: " + this.calcStack[0])
+            //console.log("op is equal to pop: " + this.calcStack[0])
             this.pop(this.calcStack[0])
             var first = this.calcStack[0]
-            console.log("after pop, stack and first is: " + stack) //should be zero index on stack
+            //console.log("after pop, stack and first is: " + stack) //should be zero index on stack
             stack = first
         }else if(op == "pop" && recursive > 0 ){
-            console.log("op is equal to pop: " + this.calcStack[0])
+            //console.log("op is equal to pop: " + this.calcStack[0])
             var first = this.calcStack[0]
             stack = first
             this.pop(this.calcStack[0])
-            console.log("after pop, stack and first is: " + stack) //neds to be prev value
+            //console.log("after pop, stack and first is: " + stack) //neds to be prev value
         }
 
 
@@ -162,12 +160,12 @@ class PreCalc{
         //IF ADD/SUB - CALCULATE
         if (op == 'add'){
                 answer = stack + num
-                console.log(answer + " = " + stack+ " + "+ num )
+                //console.log(answer + " = " + stack+ " + "+ num )
         }
         
         if (op == 'subtract'){
                 answer = stack - num
-                console.log(answer + " = " + stack+ " - "+ num )
+                //console.log(answer + " = " + stack+ " - "+ num )
         }
 
         //IF EXP CALCULATION
@@ -181,22 +179,22 @@ class PreCalc{
             //IF ADD/SUB - CALCULATE
             if (expOperation == 'add'){
                 answer = answer + opNumber
-                console.log(answer + " = " + answer+ " + "+ opNumber )
+                //console.log(answer + " = " + answer+ " + "+ opNumber )
             }
         
              if (expOperation == 'subtract'){
                 answer = answer - opNumber
-                console.log(answer + " = " + answer+ " - "+ opNumber )
+                //console.log(answer + " = " + answer+ " - "+ opNumber )
             }
 
         }               
         
-        console.log("number at end of call is: " + num)
-        console.log("answer at end of call is: " + answer)
-        console.log("stack at end of cal is: " + stack )
+        //console.log("number at end of call is: " + num)
+        //console.log("answer at end of call is: " + answer)
+        //console.log("stack at end of cal is: " + stack )
 
-
-        return answer;
+        console.log(answer)
+        return answer
 
     };//END OF CALC
 
