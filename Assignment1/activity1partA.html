@@ -1,0 +1,40 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <form action="https://postman-echo.com/get?" method="GET">
+            <br>Color: <input type="color" name="tmhernan_color" required>
+            <br>
+            <br>Date: <input type="date" name="tmhernan_date" min="2010-01-01" max="2017-09-01" required>
+            <br>
+            <br>Datetime-local <input type="datetime-local" name="tmerhan_datetime_local" required>
+            <br>
+            <br>E-mail <input type="email" name="tmhernan_email" required>
+            <br>
+            <br>Number <input type="number" name="tmhernan_number" value="100" required> 
+            <br>
+            <br>Month <input type="month" name="tmhernan_month" required>
+            <br>
+            <br>Range <input type="range" name="tmherna_range" min="-10" max="10" required>
+            <br>
+            <br>Search <input type="search" name="tmhernan_search" required>
+            <br>
+            <br>Tel <input type="tel" name="tmhernan_tel" required>
+            <br>
+            <br>Time <input type="time" name="tmhernan_time" required>
+            <br>
+            <br>Url <input type="url" name="tmhernan_url" required>
+            <br>
+            <br>Week <input type="week" name="tmhernan_week" required>
+            <br>
+            <br><label>Routing Number 
+                <input type="text" pattern="^[0-9]{9}" name="tmhernan_RTN" value="000000000" size="9" maxlength="9" required>
+                <input type="text" pattern="[0-9]{12}" name="tmhernan_RTN" value="000000000000" size="12" maxlength="12" required>
+                <input type="text" pattern="[0-9]{4}" name="tmhernan_RTN" value="0000" size="4" maxlength="4" required>
+            </label>
+            <br>
+            <br>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
