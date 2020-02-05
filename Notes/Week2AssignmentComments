@@ -1,0 +1,42 @@
+1. Add a Q&A
+	a.User enters:
+		i. Question
+		ii. Answer
+		iii. Tags
+
+	b. system enters
+		i. date user created
+		ii. unique id
+		
+2. Edit a Q&A
+	a. Update the answer text
+		i. Delete existing and add
+			-Cannot be empty.
+			-Cannot be the same answer that already exists
+	b. Update tags
+		i. Delete existing and add
+			-Cannot be empty
+			-Cannot be the same tags that already exist
+
+3. Delete a whole Q&A
+	a. use unique id only
+	b. Delete your own (maybe only to go in later when user is logged in)
+	
+4. Return a filtered collection
+	Checks for one or more of the criteria:
+	a. Author
+	b. start end date
+	c  tags
+	
+	filter(author, start, end, tags)
+
+1. author
+2. start date
+3. end date
+4. tags
+5. author and start date (everything from start date and up)
+6. author and end date
+7. author and tags
+8. start date and end date
+9. start date and tags
+10. end date and tags

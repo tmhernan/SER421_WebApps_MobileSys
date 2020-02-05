@@ -10,7 +10,7 @@
   {
     "question": "When is the due date of assignment 1?",
     "answer": "September 9th, 11:59pm",
-    "tags": "due date, assignment 1",
+    "tags": "due date, assignment 1, blackbox",
     "author": "Dr.M",
     "date": "2019-09-01T04:17:56.931Z",
     "id": 1567311476931.9548
@@ -48,35 +48,11 @@
     "id": 1567820513853.8557
   },
   {
-    "question": "hello",
-    "answer": "hello",
-    "tag": "hello",
+    "question": "yo",
+    "answer": "0000000000000000000;o",
+    "tags": "hello",
     "author": "hello",
-    "date": "2020-01-31T12:18:21.943Z",
-    "id": 1419843368424.5615
-  },
-  {
-    "question": "hello",
-    "answer": "hello",
-    "tag": "hello",
-    "author": "hello",
-    "date": "2020-01-31T12:23:23.669Z",
-    "id": 1750513498985.2349
-  },
-  {
-    "question": "hello",
-    "answer": "hello",
-    "tag": "hello",
-    "author": "hello",
-    "date": "2020-01-31T12:23:52.258Z",
-    "id": 1428030200417.2617
-  },
-  {
-    "question": "hello",
-    "answer": "hello",
-    "tag": "hello",
-    "author": "hello",
-    "date": "2020-01-31T12:35:07.559Z",
-    "id": 1302870523644.4167
+    "date": "2020-02-01T14:25:54.670Z",
+    "id": 1132907024690.368
   }
 ]
