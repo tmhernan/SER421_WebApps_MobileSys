@@ -1,0 +1,5 @@
+When Should We Switch from the Hamburger?
+We know the hamburger isn’t the optimal solution, and it can be improved. However, it’s important to ask yourself and your team what your goals are and whether the change would be worth the effort. The most important question of all:
+Is it important to drive users to the features in the hamburger menu?
+If your answer is no, your app is probably fine as is. When users are looking for increased functionality, they’ll likely head over to the hamburger menu to tweak settings or figure out the full potential of the app.
+If the answer is yes, you’re in luck because we’ve got 7 alternatives for you. First though, we need to talk about the criteria you should use to evaluate each one, and determine the optimal solution for your app.

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1 User Activity
+    if(userActions.length)
+        for item in userActions
+            li=  item.method + ", " + item.id + ", " + item.comment
+    else
+        p No comments to show   

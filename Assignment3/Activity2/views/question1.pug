@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 Survey Page 1 for #{name}
+    p #{question}
+
+    form(method= 'post', action='/question/2')
+        #form-group
+        for item in options
+            input(type= 'radio', name= 'question1' value= item, required)
+            | #{item}
+        br    
+        button.btn.btn-primary(type= 'submit' name= 'next' value= 'next') Next

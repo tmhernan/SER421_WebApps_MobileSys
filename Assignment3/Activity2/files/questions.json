@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "question": "Do you have any pets?",
+        "options": [ "yes","no"]
+    },
+    {
+        "id": 2,
+        "question": "What is your usual bed time?",
+        "options": [ "early", "regular", "late"]
+    },
+    {
+        "id": 3,
+        "question": "Do you smoke?",
+        "options": [ "yes","no"]
+    },
+    {
+        "id": 4,
+        "question": "Rachel or Monica?",
+        "options": [ "rachel","monica"]
+    },
+    {
+        "id": 5,
+        "question": "Vanilla or Chocolate?",
+        "options": [ "vanilla","chocolate"]
+    }
+]

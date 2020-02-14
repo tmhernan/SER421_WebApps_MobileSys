@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Welcome
+
+  form(method = 'POST' action = '/question/1')
+    #form-group 
+      label UserName:
+      input.form-control(type='text', name='username' required = 'true')
+    input.btn.btn-primary(type= 'submit', value= 'Match' )

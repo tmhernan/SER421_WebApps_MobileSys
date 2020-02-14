@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1 Welcome. Here's an article: #{title}
+  body 
+  p Article is #{file}
+
+  h2 User Activity
+  form(method = 'GET' action = "/view")
+      #form-group
+        button.btn.btn-primary(type='submit' name = 'activity') View User Activity
+  form(method = 'GET' action = "/reset")
+      #form-group
+        button.btn.btn-primary(type='submit' name = 'reset') Reset
+
+  h2 Add A Comment
+  form(method = 'POST' action = "/add")
+      #form-group
+        label Comment Id:
+        input.form-control(type='number', name='id' required='true')
+        label Comments:
+        input.form-control(type='text', name='comment' required='true')
+      input.btn.btn-primary(type='submit' value='Add' ) 
+  
+  form
+      div.form-group
+      button.btn.btn-primary(type='button' name = 'undo') Undo
+
+  h2 Comments
+  if(comments.length)
+    for item in comments
+      li= "id: " + item.id + " comment: " + item.comment
+  else
+    p No comments to show
+
+  h2 Delete specific comment
+  form(method = 'POST' action = "/delete")
+      #form-group
+        label Question ID:
+        input.form-control(type='number', name='id' required='true')
+      button.btn.btn-primary(type='submit' name = 'deletecomment') Delete Comment

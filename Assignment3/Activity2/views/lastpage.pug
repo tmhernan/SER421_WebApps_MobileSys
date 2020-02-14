@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 Matches for #{name}
+    p Best matches ordered from best to worst:
+
+    if(matches.length)
+        for item in matches
+            li= item.matchname + " has a match count of " + item.match
+    else    
+        p You have no matches.
+
+    p #[a(href="http://localhost:3000") Take The Quiz Again]
