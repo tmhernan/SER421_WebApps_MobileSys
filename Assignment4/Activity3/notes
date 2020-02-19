@@ -1,0 +1,51 @@
+1. write to a file or database
+2. cookies
+
+
+
+
+
+Build in map type structure:
+
+3. session 
+	-ends after a session, expire when brower closes
+	
+	
+	-TO CLEAR: sessionStorage.clear() so that the keys no longer exist
+	
+4. local storage
+	-remembers where you are in the app, application state
+	-persist until browser runs out of room in memeory
+	
+	
+	-TO CLEAR: localStorage.clear()
+
+
+
+localstorage/session storage:
+-Random replacements until all have been used (browser/session based?)
+	-Save word used in session data if it's used and compare the var to that OR,
+	-Save var dictionary in local storage. Save what's been used in session
+		storage. Compare the two. If the random number exists in session storage
+		already, create another random number. 
+
+-LIST
+	-if list has no reviews alert the user
+	-lists all reviews and splits them up between censored and unsensored
+		-save to session data
+		-manipulate dom to show
+
+session:
+-COUNT number of bad words used in a session
+	-on submit button, count the nubmer of words and add them to the session variable "count"
+
+
+local storage/session storage:
+-SEARCH for bad word and it returns all corresponding nice words
+	-HISTORY of searched words, save the user's search history in session storage
+		-with format (index, searched word), SHOWS them to user (manipulate dom to show)
+- SAVE STATE: comments to be made stateful
+
+
+CLEAR resets everything but most likely except the var dictionary saved in local storage
+

@@ -25,39 +25,21 @@ var dictionary = {
 
 
 
-function setTimer(){
 
-    var idleMessages = dictionary.entries
-
-    for(const element of idleMessages){
-      
-      var key = element.key
-      
-      var answer = element.answer
-
-        for(const item of key){
-
-          var answerSize = answer.length
-          console.log(answerSize)
-          var replacementIndex = Math.floor(Math.random() * answerSize)
-
-          if (item === "idle"){
-
-            var alertMessage = answer[replacementIndex]
-
-            alert(alertMessage)
-
-          }
-        }
-    }
-}
 
 
 function getName(){
   return document.getElementById("fName").value
 }
 
-function getNameCookie(){
+//add dictionary to local storage
+function addDictionary(){
+  localStorage.setItem("dictionary", JSON.stringify(dictionary.entries))
+}
+
+
+
+function showNameCookie(){
   var  review = 'Review <br> Unabashedly whimsical childishness carried off with such intoxicating upbeat energy that its pure bliss to watch it with or without a child in tow.' 
   console.log("hello")
   var userN = getCookie("userName");
@@ -88,13 +70,7 @@ function getCookie(cname) {
   }
 }
 
-//if user has name in cookies
-function checkCookie() {
-  var user = getCookie("userName");
-  if (user != undefined) {
-    alert("Welcome again " + user);
-  } 
-}
+
 
 function checkJson(json){
     try {
@@ -184,7 +160,11 @@ function getReview(){
         }
     
     }//end of json object loop
-  
+
+  //IF IT IS A COMMAND
+  }else if(review.charAt(0) == '/'){
+
+    command(review);
 
   }else{
     
@@ -198,6 +178,7 @@ function getReview(){
       var entries = newEntries.entries
     }
     console.log(entries)
+    var count = 0;
 
     //parse words
     for (var i = 0; i < words.length; i++){
@@ -223,18 +204,21 @@ function getReview(){
 
             //if the user's word matches the bad word
             if(words[i] === badWord){
+              count++
+              sessionStorage.setItem("count", JSON.stringify(count))
+
               //Generate a random # index
               var userWord = words[i]
               var replacementIndex = Math.floor(Math.random() * answerSize)
               console.log(replacementIndex)
-              
-              var newWord = answer[replacementIndex];
-             
+
+              var newWord = answer[replacementIndex];            
+
+              //replace the bad word w/ the new word
               words[i] = newWord
               
               console.log(userWord)
               console.log(words)
-
 
               break searchKeys;
             }
@@ -256,9 +240,118 @@ function getReview(){
     //return to textarea
     document.getElementById("review").value = newWordsStr;
 
+    //SAVE COMMENT TO LOCAL STORAGE w/ user's name as a key
+    localStorage.setItem(getCookie("userName"), JSON.stringify(newWordsStr))
+
     return newWordsStr
   }
+}
 
 
+//FUNCTION DOES LAST COMMENT EXIST?
+function getLastReview(){
+  
+  //get user's name stored in cookies
+  var use = getCookie("userName");
+  console.log(use)
 
+  //look up to see if a last review for that user exists
+  var lastReviewJson = localStorage.getItem(use);
+  console.log(lastReviewJson)
+  
+  //check if it's null and if it's not parse it
+  if(!lastReviewJson === null){
+    
+    var lastReview = JSON.parse(lastReviewJson);
+
+    //print out last comment review
+    document.getElementById("review").value = showNameCookie() + lastReview;
+  }
+
+}
+
+
+function command(review){
+
+  var words = review.split(" ")
+  console.log(words)
+
+  //if cleared delete cookie name and last review
+  if(words[0] === "/clear"){
+    //remove from last review
+    localStorage.removeItem(getCookie("userName"))
+    
+    //remove cookie/name of user
+    document.cookie = "userName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    //clear history
+    sessionStorage.removeItem("history")
+
+    //clear last review
+    localStorage.removeItem("review")
+
+    //clear count
+    sessionStorage.removeItem("count")
+
+  
+  }else if(words[0] === "/search"){
+    var searchWord = words[1];
+    console.log(searchWord)
+    var searchDictionary = JSON.parse(localStorage.getItem("dictionary"))
+
+    
+    //add search to browser session storage for "/history" command
+    if(sessionStorage.getItem("history") === null){
+      var history = [];
+      history.push(searchWord)
+      sessionStorage.setItem("history", JSON.stringify(history))
+    }else{
+      var history = JSON.parse(sessionStorage.getItem("history"))
+      history.push(searchWord)
+      sessionStorage.setItem("history", JSON.stringify(history))
+    }
+
+    //parse entries key and answer
+    for(const element of searchDictionary){
+      console.log(element)
+      
+      var key = element.key
+      console.log(key)
+      
+      var answer = element.answer
+      console.log(answer)
+
+        //for every bad word in each key of entries
+        searchKeys: for(const badWord of key){        
+          //if the search word matches the badword
+          if (badWord === searchWord){
+            //show all coresponding nice words for the badword
+            document.getElementById("review").value = answer;
+            break searchKeys;
+          }
+        }
+      }
+
+
+  //end of search loop
+  }else if(words[0] === "/history"){
+    var history = JSON.parse(sessionStorage.getItem("history"));
+    console.log(history)
+
+    var htmlStr = '<ol>'
+    
+    for (const word of history){
+
+      htmlStr += '<li>' + word + '</li>'
+
+    }
+    htmlStr += '</ol>'
+    console.log(htmlStr)
+    document.getElementById("historyList").innerHTML = htmlStr;
+
+  }else if (words[0] === "/count"){
+    var badCount = JSON.parse(sessionStorage.getItem("count"))
+    console.log(badCount)
+    document.getElementById("review").value = "The number of rude words is " +  badCount;
+  }
 }
