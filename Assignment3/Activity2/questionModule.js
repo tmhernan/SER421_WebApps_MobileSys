@@ -1,4 +1,5 @@
 
+
 var checkUsername = 
     function(username){
         console.log(username)

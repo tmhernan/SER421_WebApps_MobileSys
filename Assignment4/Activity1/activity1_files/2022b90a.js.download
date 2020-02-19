@@ -1,0 +1,1 @@
+var SerpRelatedVideosCarousel=function(){typeof Carousel!="undefined"&&Carousel&&Carousel.apply(this)},SerpRelatedVideosCar=new SerpRelatedVideosCarousel
