@@ -280,18 +280,25 @@ function command(review){
   if(words[0] === "/clear"){
     //remove from last review
     localStorage.removeItem(getCookie("userName"))
+    //clear username
+    document.getElementById("fName").value = ''
     
     //remove cookie/name of user
     document.cookie = "userName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
     //clear history
     sessionStorage.removeItem("history")
+    //clear history list
+    document.getElementById("historyList").value = ''
 
     //clear last review
     localStorage.removeItem("review")
 
     //clear count
     sessionStorage.removeItem("count")
+
+    //clear textarea box
+    document.getElementById("review").value = ''
 
   
   }else if(words[0] === "/search"){
@@ -353,5 +360,7 @@ function command(review){
     var badCount = JSON.parse(sessionStorage.getItem("count"))
     console.log(badCount)
     document.getElementById("review").value = "The number of rude words is " +  badCount;
+  }else if (words[0] === "/list"){
+
   }
 }
