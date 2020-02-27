@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-port = process.env.PORT || 8080;
+port = process.env.PORT || 8008;
 
 app.post('/euro', function(req, res) {
     console.log('hello');

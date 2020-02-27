@@ -2,6 +2,7 @@ var repo = [];
 var repoSecond = [];
 var username;
 var filteredRepos = [];
+var selectedVal;
 
 var fetchUserRepo = function() {
     username = document.getElementById('username').value;
@@ -69,7 +70,7 @@ function getRepo() {
     repo1html.innerHTML = repo[0].owner.html_url;
     repo1list.innerHTML = 'Languages: ' + repo[0].language + ' <br> Language url: ' + repo[0].languages_url;
     repo1download.innerHTML = repo[0].downloads_url;
-    repo1branches.innerHTML = '<button type = ' + 'button' + '> Branches';
+    repo1branches.innerHTML = '<button type = ' + 'button' + 'id = first onclick= pullBranchOne() > Branches';
 
     var repo2 = table.insertRow(2);
 
@@ -91,7 +92,7 @@ function getRepo() {
     repo2html.innerHTML = repo[1].owner.html_url;
     repo2list.innerHTML = 'Languages: ' + repo[1].language + ' <br> Language url: ' + repo[1].languages_url;
     repo2download.innerHTML = repo[1].downloads_url;
-    repo2branches.innerHTML = '<button type = ' + 'button' + '> Branches';
+    repo2branches.innerHTML = '<button type = ' + 'button' + ' onclick= pullBranchTwo() id = second > Branches';
 }
 
 //
@@ -157,7 +158,6 @@ var getSelectedRepo = function() {
     console.log(filteredRepos);
     console.log(filteredRepos.length);
 
-    var selectedVal;
     for (var i = 0; i < filteredRepos.length; i++) {
         console.log('hello');
         if (filteredRepos[i].name.localeCompare(val) === 0) {
@@ -188,7 +188,7 @@ var getSelectedRepo = function() {
     repo3html.innerHTML = filteredRepos[selectedVal].owner.html_url;
     repo3list.innerHTML = 'Languages: ' + filteredRepos[selectedVal].language + ' <br> Language url: ' + filteredRepos[selectedVal].languages_url;
     repo3download.innerHTML = filteredRepos[selectedVal].downloads_url;
-    repo3branches.innerHTML = '<button type = ' + 'button' + '> Branches';
+    repo3branches.innerHTML = '<button type = ' + 'button' + ' onclick= pullBranchThree() id = first > Branches';
 };
 
 function clearRow() {
@@ -196,4 +196,108 @@ function clearRow() {
 
     var tab = document.getElementById('table');
     tab.removeChild(tab.children[0]);
+}
+
+//GET /repos/:owner/:repo/branches
+
+function pullBranchOne() {
+    var count = 0;
+    var repoName = repo[0].name;
+
+    fetch('https://api.github.com/repos/' + username + '/' + repoName + '/branches')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+
+            while (count < 31) {
+                var htmlStr = '<ol>';
+
+                for (const element of json) {
+                    htmlStr +=
+                        '<li>' +
+                        'Name: ' +
+                        element.name +
+                        ' Sha:' +
+                        element.commit.sha +
+                        ' URL: ' +
+                        element.commit.url +
+                        ' Protected: ' +
+                        element.protected +
+                        '</li>';
+                }
+                htmlStr += '</ol>';
+                console.log(htmlStr);
+                count++;
+            }
+            document.getElementById('resultList').innerHTML = htmlStr;
+            count = 0;
+        });
+}
+
+function pullBranchTwo() {
+    var count = 0;
+    var repoName = repo[1].name;
+
+    fetch('https://api.github.com/repos/' + username + '/' + repoName + '/branches')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+
+            while (count < 31) {
+                var htmlStr = '<ol>';
+
+                for (const element of json) {
+                    htmlStr +=
+                        '<li>' +
+                        'Name: ' +
+                        element.name +
+                        ' Sha:' +
+                        element.commit.sha +
+                        ' URL: ' +
+                        element.commit.url +
+                        ' Protected: ' +
+                        element.protected +
+                        '</li>';
+                }
+                htmlStr += '</ol>';
+                console.log(htmlStr);
+                count++;
+            }
+            document.getElementById('resultList').innerHTML = htmlStr;
+            count = 0;
+        });
+}
+
+function pullBranchThree() {
+    var count = 0;
+    var repoName = filteredRepos[selectedVal].name;
+
+    fetch('https://api.github.com/repos/' + username + '/' + repoName + '/branches')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+
+            while (count < 31) {
+                var htmlStr = '<ol>';
+
+                for (const element of json) {
+                    htmlStr +=
+                        '<li>' +
+                        'Name: ' +
+                        element.name +
+                        ' Sha:' +
+                        element.commit.sha +
+                        ' URL: ' +
+                        element.commit.url +
+                        ' Protected: ' +
+                        element.protected +
+                        '</li>';
+                }
+                htmlStr += '</ol>';
+                console.log(htmlStr);
+                count++;
+            }
+            document.getElementById('resultList').innerHTML = htmlStr;
+            count = 0;
+        });
 }
