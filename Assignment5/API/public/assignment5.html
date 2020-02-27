@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src="assignment5.js" type="text/javascript" ></script>
+    </head>
+    <body>
+        <fieldset>
+            <form>
+                <p>Currency Value Is: </p>
+                <p id= "result"></p>
+                <div>ENTER IN US: </div>
+                <br>
+                <input type="text" id="number" name="userInput">
+                </br>            
+                </br>            
+                </br>
+                <input type="button" value="Euro" onclick="postToServerEuro(), getFromServerHistory()"/>
+                <input type="button" value="Pound" onclick="postToServerPound(), getFromServerHistory()"/>
+                <input type="button" value="Pop" onclick="getFromServerPop(), getFromServerHistory()"/>
+                <input type="button" value="History" onclick="getFromServerHistory()"/>
+              </form>
+        </fieldset>
+        <br>
+        <div id= "resultList"></div>
+    </body>
+</html>

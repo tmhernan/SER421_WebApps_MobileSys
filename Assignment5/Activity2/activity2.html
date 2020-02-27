@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <script src="activity2.js" type="text/javascript" ></script>
+
+        <style>
+            tr,td {
+              border: 1px solid black;
+            }
+            </style>
+    </head>
+    <body>
+        <fieldset>
+                <p id= "result"></p>
+                <div>ID: </div>
+                <br>
+                <input type="text" id="username">
+                </br>            
+                </br>            
+                </br>
+                <button type="button" value="details" onclick = "fetchUserRepo()" >
+                    Get Details
+                </button>
+
+        </fieldset>
+        <br>
+            <table id = table
+            >
+                <tr>
+                   <td>Repository Name</td> 
+                   <td>Time Stamps: Created & Updated</td>
+                   <td>Size</td>
+                   <td>Number of Forks</td>
+                   <td>Name of Open Issues</td>
+                   <td>HMTL URL</td>
+                   <td>List of Languages used and URL</td>
+                   <td>Downloads</td>
+                   <td>Branches</td>
+
+                </tr>
+
+                <tr>
+                </tr>
+
+
+
+            </table>
+
+
+
+            <button type="button"  onclick =  >
+                Refresh
+            </button>
+
+
+            <select id="select" onclick="fetchBranchList()" onchange="getSelectedRepo()" >
+                <option value="default">Others</option>
+            </select>
+
+
+    </body>
+</html>
