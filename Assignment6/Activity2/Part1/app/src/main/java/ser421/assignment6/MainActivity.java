@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         display.getSize(size);
         int width = size.x;
         int height = size.y;
-        Double val = new Double(width)/new Double(550);
+        Double val = new Double(width)/new Double(600);
         val = val * 100d;
         return val.intValue();
     }

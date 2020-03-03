@@ -3,7 +3,6 @@
 
 <head>
 	<title>A Very Simple Battleship Game</title>
-
 	<style>
 		div.gameGrid{
 			position: absolute;
@@ -25,18 +24,18 @@
 		}
 	</style>
 	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	<script language="javascript" type="text/javascript">
+  		window.onload = getName(s);
+
+	</script>
+
 </head>
 
 <body>
 
 	<h1>Battleship</h1>
+	<div id = "welcomeMsg"></div>
 
-	<form id="form">
-		<input type="text" placeholder="Enter your name" id="username">
-		<button type="button" onclick="welcomeUser()">
-			Submit
-		</button>
-	</form>
 
 	<br>
 
@@ -58,7 +57,7 @@
 			<span id="recordDetails" hidden="">
 			</span>
 		
-			<button type="button" onclick="restartGame();" id="restartBtn" disabled>
+			<button type="button" onclick="restartGame(); Android.restart()" id="restartBtn" disabled>
 				Restart
 			</button>
 		</div>
