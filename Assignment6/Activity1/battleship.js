@@ -16,6 +16,7 @@ var username;
 */
 var hitCount = 0;
 var gameBoard = [];
+var history = [];
 
 // very simple form
 var message = 'restarted';
@@ -259,13 +260,33 @@ function setGame() {
 }
 
 function showHistory() {
+    var list = document.getElementById('guessHistoryDetails');
+    var historyList = JSON.parse(sessionStorage.getItem('history'));
+
+    if (list.style.display == 'none') {
+        var htmlStr = '<ol>';
+
+        for (const element of historyList) {
+            htmlStr += '<li>' + 'guess nr : ' + element.guess + ' : ' + element.type + '</li>';
+        }
+        htmlStr += '</ol>';
+
+        document.getElementById('guessHistoryDetails').innerHTML = htmlStr;
+
+        list.style.display = 'block';
+    } else {
+        list.style.display = 'none';
+    }
+
+    /*
     if (document.getElementById('guessHistoryDetails').hasAttribute('hidden')) {
         document.getElementById('historyBtn').innerHTML = 'Hide History';
         document.getElementById('guessHistoryDetails').removeAttribute('hidden');
     } else {
         document.getElementById('guessHistoryDetails').setAttribute('hidden', true);
         document.getElementById('historyBtn').innerHTML = 'Show History';
-    }
+	}
+	*/
 }
 
 function showRecord() {
@@ -279,9 +300,10 @@ function showRecord() {
 }
 
 function restartGame() {
-
     // clear guess history
-    document.getElementById('guessHistoryDetails').innerHTML = '';
+    //document.getElementById('guessHistoryDetails').innerHTML = '';
+    sessionStorage.removeItem('history');
+    showHistory();
     document.getElementById('recordDetails').innerHTML += username + ' ' + message + ' game. <br>';
     setGame();
 }
@@ -314,6 +336,22 @@ function fireTorpedo(e) {
                 e.target.style.background = '#bbb';
                 // set this square's value to 3 to indicate that they fired and missed
                 gameBoard[row][col] = 3;
+
+                var misses = {
+                    guess: guess,
+                    type: 'miss'
+                };
+
+                if (sessionStorage.getItem('history') === null) {
+                    history = [];
+                    history.push(misses);
+                    sessionStorage.setItem('history', JSON.stringify(history));
+                } else {
+                    var history = JSON.parse(sessionStorage.getItem('history'));
+                    history.push(misses);
+                    sessionStorage.setItem('history', JSON.stringify(history));
+                }
+
                 document.getElementById('guessHistoryDetails').innerHTML += 'guess nr: ' + guess + ': miss <br>';
             }
 
@@ -322,6 +360,22 @@ function fireTorpedo(e) {
             e.target.style.background = 'red';
             // set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 2;
+
+            var hits = {
+                guess: guess,
+                type: 'hit'
+            };
+
+            if (sessionStorage.getItem('history') === null) {
+                history = [];
+                history.push(hits);
+                sessionStorage.setItem('history', JSON.stringify(history));
+            } else {
+                var history = JSON.parse(sessionStorage.getItem('history'));
+                history.push(hits);
+                sessionStorage.setItem('history', JSON.stringify(history));
+            }
+
             document.getElementById('guessHistoryDetails').innerHTML += 'guess nr: ' + guess + ': hit <br>';
 
             // increment hitCount each time a ship is hit
