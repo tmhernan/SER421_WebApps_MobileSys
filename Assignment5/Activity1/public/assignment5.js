@@ -1,3 +1,16 @@
+/*
+Calls to (converter) API using AJAX.
+
+Note: Sents user agent information to be displayed.
+
+https://www.w3schools.com/jsref/prop_nav_useragent.asp
+The userAgent property returns the value of the 
+user-agent header sent by the browser to the server.
+
+The value returned, contains information about the name, 
+version and platform of the browser.
+*/
+
 function postToServerEuro() {
     let dollar = document.getElementById('number').value;
     let req = new XMLHttpRequest();
@@ -6,7 +19,7 @@ function postToServerEuro() {
     req.setRequestHeader('Content-type', 'application/json');
 
     console.log('in post to server');
-    req.onreadystatechange = function() {
+    req.onreadystatechange = function () {
         if (req.readyState === 4) {
             console.log('State: ' + req.readyState);
             if (req.status === 200) {
@@ -42,7 +55,7 @@ function postToServerPound() {
     req.setRequestHeader('Content-type', 'application/json');
 
     console.log('in post to server');
-    req.onreadystatechange = function() {
+    req.onreadystatechange = function () {
         if (req.readyState === 4) {
             console.log('State: ' + req.readyState);
             if (req.status === 200) {
@@ -77,7 +90,7 @@ function getFromServerHistory() {
     req.setRequestHeader('Content-type', 'application/json');
 
     console.log('in post ljljlkjlkto server');
-    req.onreadystatechange = function() {
+    req.onreadystatechange = function () {
         if (req.readyState === 4) {
             console.log('State: ' + req.readyState);
             if (req.status === 200) {
@@ -134,7 +147,7 @@ function getFromServerPop() {
     req.setRequestHeader('Content-type', 'application/json');
 
     console.log('in post to server');
-    req.onreadystatechange = function() {
+    req.onreadystatechange = function () {
         if (req.readyState === 4) {
             console.log('State: ' + req.readyState);
             if (req.status === 200) {

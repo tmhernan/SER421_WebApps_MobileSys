@@ -1,9 +1,10 @@
-// /euro POST
-// /pound POST
-// /pop GET
-// /history GET
-// Operand: 8 was converted from USD to 6.24 POUND IP: ::1 User-Details: Mozilla..etc...
-
+/*
+A set of funcitons providing logic behind the NodeJS API. History is 
+stored in a .json file. Logic includes
+-converting us dollars to euros and pounds.
+-history: keeps the user's history of the operands used
+-pop: pops the last history entry off the stack (of .json file)
+*/
 var history = [];
 
 var usToEuro = function(dollars) {
@@ -123,6 +124,8 @@ exports.pop = pop;
 exports.history = history;
 
 /*
+TEST/DEBUG
+
 console.log(usToEuro(5));
 console.log(usToEuro(10));
 console.log(usToPound(10));

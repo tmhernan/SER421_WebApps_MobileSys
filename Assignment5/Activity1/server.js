@@ -1,9 +1,9 @@
-// /euro POST
-// /pound POST
-// /pop GET
-// /history GET
+/*
+NodeJS API server works in conjunction with coverter.js providing 
+the logic. 
 
-// Operand: 8 was converted from USD to 6.24 POUND IP: ::1 User-Details: Mozilla..etc...
+Note: IP address of user is gathered here.
+*/
 
 var express = require('express');
 var app = express();
@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-port = process.env.PORT || 8008;
+port = process.env.PORT || 5500;
 
-app.post('/euro', function(req, res) {
+app.post('/euro', function (req, res) {
     console.log('hello');
     console.log('request being received is: ' + req.body.value);
 
@@ -30,7 +30,7 @@ app.post('/euro', function(req, res) {
     res.send(data);
 });
 
-app.post('/pound', function(req, res) {
+app.post('/pound', function (req, res) {
     console.log('hello');
     console.log('request being received is: ' + req.body.value);
 
@@ -43,7 +43,7 @@ app.post('/pound', function(req, res) {
     res.send(data);
 });
 
-app.get('/history', function(req, res) {
+app.get('/history', function (req, res) {
     console.log('hello');
     console.log('request being received is: ' + req.body.value);
     var contollerRes = converter.history();
@@ -58,7 +58,7 @@ app.get('/history', function(req, res) {
 
     var dataObj = {
         history: contollerRes,
-        ip: ip
+        ip: ip,
     };
     var data = JSON.stringify(dataObj);
 
@@ -67,7 +67,7 @@ app.get('/history', function(req, res) {
     res.send(data);
 });
 
-app.get('/pop', function(req, res) {
+app.get('/pop', function (req, res) {
     console.log('hello');
     //console.log('request being received is: ' + req.body.value);
     var contollerRes = converter.pop();

@@ -1,3 +1,10 @@
+Android app with battleship game.
+
+Run with Android Studio.
+
+
+
+
 Activity 1
 
     Five ships with lenght 2, 3, 3, 4, 5 placed at random. No overlapping and no boundary overlap.

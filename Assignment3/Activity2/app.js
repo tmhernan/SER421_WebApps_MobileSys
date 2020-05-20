@@ -1,3 +1,11 @@
+/*
+A web app that acts as a roomate finder, answering 5 questions and
+ranking matches.
+
+Implemented using express framework. All data saved to .json files.
+*/
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

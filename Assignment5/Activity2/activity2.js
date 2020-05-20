@@ -1,16 +1,21 @@
+/*
+Webpage (activity2.html) calls the github api using fetch.
+
+*/
+
 var repo = [];
 var repoSecond = [];
 var username;
 var filteredRepos = [];
 var selectedVal;
 
-var fetchUserRepo = function() {
+var fetchUserRepo = function () {
     username = document.getElementById('username').value;
     console.log('hello');
 
     fetch('https://api.github.com/users/' + username + '/repos')
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
             console.log(json);
             for (let element of json) {
                 repo.push(element);
@@ -27,14 +32,6 @@ var fetchUserRepo = function() {
 
                 console.log(element.open_issues_count);
 
-                //var owner = element.owner.response.json();
-
-                /*
-                for(const element of owner){
-
-                    console.log(element.html_url);
-                }
-*/
                 console.log(element.language);
 
                 console.log(element.git_url);
@@ -96,10 +93,10 @@ function getRepo() {
 }
 
 //
-var fetchBranchList = oneTime(function() {
+var fetchBranchList = oneTime(function () {
     fetch('https://api.github.com/users/' + username + '/repos')
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
             console.log(json);
             for (let element of json) {
                 repoSecond.push(element);
@@ -126,7 +123,7 @@ var fetchBranchList = oneTime(function() {
         });
 });
 
-var getDropDown = function() {
+var getDropDown = function () {
     //if array is not empty
     for (var i = 0; i < 5; i++) {
         var option = document.createElement('OPTION');
@@ -140,7 +137,7 @@ var getDropDown = function() {
 function oneTime(n, context) {
     var res;
 
-    return function() {
+    return function () {
         if (n) {
             res = n.apply(context || this, arguments);
             n = null;
@@ -150,7 +147,7 @@ function oneTime(n, context) {
     };
 }
 
-var getSelectedRepo = function() {
+var getSelectedRepo = function () {
     var list = document.getElementById('select');
     var val = list.options[list.selectedIndex].text;
 
@@ -205,8 +202,8 @@ function pullBranchOne() {
     var repoName = repo[0].name;
 
     fetch('https://api.github.com/repos/' + username + '/' + repoName + '/branches')
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
             console.log(json);
 
             while (count < 31) {
@@ -239,8 +236,8 @@ function pullBranchTwo() {
     var repoName = repo[1].name;
 
     fetch('https://api.github.com/repos/' + username + '/' + repoName + '/branches')
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
             console.log(json);
 
             while (count < 31) {
@@ -273,8 +270,8 @@ function pullBranchThree() {
     var repoName = filteredRepos[selectedVal].name;
 
     fetch('https://api.github.com/repos/' + username + '/' + repoName + '/branches')
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
             console.log(json);
 
             while (count < 31) {
