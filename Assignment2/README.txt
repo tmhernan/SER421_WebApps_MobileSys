@@ -14,7 +14,6 @@ None was completed
 
 
 
-Thank you! I had too much going on with 402. This will have to be the assignment that gets dropped.
 
 
 
